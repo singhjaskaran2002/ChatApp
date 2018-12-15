@@ -1,21 +1,43 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div style="padding: 50px;margin:50px;border:1px solid black;">
+  <h1 style="background-color: aqua">Real time Chat Application</h1>
+  <hr>
+  <form>
+    <div class="row">
+      <div class="col-sm-5">
+        <input class="form-control" style="width:300px;" type="text" name="username" [(ngModel)]="username" placeholder="Username">
+      </div>
+      <div class="col-sm-3">
+        <select class="form-control" [(ngModel)]="room" name="room">
+          <option value="Room 1"> Room 1 </option>
+          <option value="Room 2"> Room 2 </option>
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-primary btn-sm" (click)="join()"> Join </button> | <button class="btn btn-sm pull-right" (click)="leave()">
+          Leave
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="row" style="margin-right:20px;margin-left:0;">
+      <div style="width:650px;height:200px;background-color:powderblue;min-height:200px;overflow:scroll;" class="col-sm-10" #chatDiv>
+        <div *ngFor="let msg of messageArray">
+          <span> <strong>{{ msg.username }} </strong>: {{ msg.message }} </span><br>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-9">
+        <input type="text" id="message" name="message" class="form-control" [(ngModel)]="message" placeholder="message">
+      </div>
+      <div class="col-sm-3">
+        <button class="btn btn-primary btn-sm" (click)="send()"> Send </button>
+      </div>
 
-<router-outlet></router-outlet>
+
+    </div>
+
+
+  </form>
+</div>
